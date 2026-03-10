@@ -4,15 +4,15 @@ Typed Python library for reading PicoScope 6 `.psdata` and `.pssettings` files.
 
 Language versions:
 - English: this file
-- Ukrainian: `python_lib/README.uk.md`
+- Ukrainian: `README.uk.md`
 
 Format specification:
-- English: `python_lib/docs/FORMAT.en.md`
-- Ukrainian: `python_lib/docs/FORMAT.uk.md`
+- English: `docs/FORMAT.en.md`
+- Ukrainian: `docs/FORMAT.uk.md`
 
 API reference:
-- English: `python_lib/docs/API.en.md`
-- Ukrainian: `python_lib/docs/API.uk.md`
+- English: `docs/API.en.md`
+- Ukrainian: `docs/API.uk.md`
 
 ## Features
 
@@ -83,7 +83,7 @@ print(spec.sample_rate_hz, spec.frequency_hz.shape, spec.magnitude.shape)
 
 ## Examples
 
-Standalone examples are in `python_lib/examples/`:
+Standalone examples are in `examples/`:
 - `basic_usage.py`
 - `numpy_usage.py`
 - `export_usage.py`
@@ -91,9 +91,9 @@ Standalone examples are in `python_lib/examples/`:
 Run from repository root:
 
 ```bash
-uv run python python_lib/examples/basic_usage.py 1.psdata
-uv run python python_lib/examples/numpy_usage.py 1.psdata --step 500
-uv run python python_lib/examples/export_usage.py 1.psdata --out 1.psdata.decoded.example
+uv run python examples/basic_usage.py 1.psdata
+uv run python examples/numpy_usage.py 1.psdata --step 500
+uv run python examples/export_usage.py 1.psdata --out 1.psdata.decoded.example
 ```
 
 ## CLI

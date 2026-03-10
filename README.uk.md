@@ -3,16 +3,16 @@
 Типізована Python-бібліотека для читання файлів PicoScope 6 `.psdata` та `.pssettings`.
 
 Мовні версії:
-- Англійська: `python_lib/README.md`
+- Англійська: `README.md`
 - Українська: цей файл
 
 Специфікація формату:
-- Англійська: `python_lib/docs/FORMAT.en.md`
-- Українська: `python_lib/docs/FORMAT.uk.md`
+- Англійська: `docs/FORMAT.en.md`
+- Українська: `docs/FORMAT.uk.md`
 
 Довідник API:
-- Англійська: `python_lib/docs/API.en.md`
-- Українська: `python_lib/docs/API.uk.md`
+- Англійська: `docs/API.en.md`
+- Українська: `docs/API.uk.md`
 
 ## Можливості
 
@@ -83,7 +83,7 @@ print(spec.sample_rate_hz, spec.frequency_hz.shape, spec.magnitude.shape)
 
 ## Приклади
 
-Окремі приклади знаходяться в `python_lib/examples/`:
+Окремі приклади знаходяться в `examples/`:
 - `basic_usage.py`
 - `numpy_usage.py`
 - `export_usage.py`
@@ -91,9 +91,9 @@ print(spec.sample_rate_hz, spec.frequency_hz.shape, spec.magnitude.shape)
 Запуск із кореня репозиторію:
 
 ```bash
-uv run python python_lib/examples/basic_usage.py 1.psdata
-uv run python python_lib/examples/numpy_usage.py 1.psdata --step 500
-uv run python python_lib/examples/export_usage.py 1.psdata --out 1.psdata.decoded.example
+uv run python examples/basic_usage.py 1.psdata
+uv run python examples/numpy_usage.py 1.psdata --step 500
+uv run python examples/export_usage.py 1.psdata --out 1.psdata.decoded.example
 ```
 
 ## CLI

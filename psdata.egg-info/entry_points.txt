@@ -1,2 +1,0 @@
-[console_scripts]
-psdata-export = psdata.exporter:main
