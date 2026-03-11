@@ -153,7 +153,7 @@ uv run python -m twine check dist/*
 Primary exports from `psdata`:
 - `PsData`, `PsDataDocument`, `PsDataError`
 - `Header`, `MetadataInfo`, `ParsedContainer`, `KnownChunk`, `BinaryDescriptor`
-- `ChannelInfo`, `ChannelSettings`, `ChannelSample`, `WindowInfo`
+- `ChannelInfo`, `ChannelSettings`, `ChannelFilterSettings`, `ChannelSample`, `WindowInfo`
 - `MathChannelInfo`, `MathChannelSample`
 - `ValueMode`, `ChannelArray`, `MathChannelArray`, `SpectrumArray`
 - `samples_np`, `channels_np`, `math_np`, `fft_np`

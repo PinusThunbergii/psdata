@@ -51,6 +51,13 @@ Return detailed channel settings:
 - `bandwidth_limit`
 - `sample_rate_hz` (inferred from time metadata)
 
+### `channel_filters(channel: int, window_index: int = 0) -> ChannelFilterSettings`
+Return filter manager settings for one channel:
+- `frequency_item_name`
+- `resenhance`
+- `operating_mode`
+- `raw_values` (all raw key/value fields from XML node)
+
 ### `samples(...) -> Iterator[ChannelSample]`
 Stream channel samples with optional filters:
 - `channel`

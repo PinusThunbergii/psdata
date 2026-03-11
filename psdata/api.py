@@ -12,6 +12,7 @@ from typing import Any, Iterator, Literal, Optional
 
 from .model import (
     ChannelArray,
+    ChannelFilterSettings,
     ChannelInfo,
     ChannelSample,
     ChannelSettings,
@@ -581,6 +582,34 @@ class PsData:
             input_max=to_float(xml_value(ch, "probesettings/range/inputrange/max/value")),
             bandwidth_limit=xml_value(ch, "bandwidthlimit"),
             sample_rate_hz=_channel_sample_rate_hz(window_node, channel),
+        )
+
+    def channel_filters(self, channel: int, window_index: int = 0) -> ChannelFilterSettings:
+        windows = self.document.settings_root.findall("./capturewindows/capturewindow")
+        if window_index < 0 or window_index >= len(windows):
+            raise PsDataError(f"Window index out of range: {window_index}")
+        window_node = windows[window_index]
+
+        channels = window_node.findall("./filtermanager/channels/channel")
+        if channel < 0 or channel >= len(channels):
+            raise PsDataError(f"Channel index out of range for filtermanager: {channel}")
+
+        ch = channels[channel]
+        raw_values: dict[str, Optional[str]] = {}
+        for child in list(ch):
+            if "value" in child.attrib:
+                raw_values[child.tag] = child.attrib.get("value")
+                continue
+            text = (child.text or "").strip()
+            raw_values[child.tag] = text or None
+
+        return ChannelFilterSettings(
+            window_index=window_index,
+            channel_index=channel,
+            frequency_item_name=raw_values.get("frequencyItemName"),
+            resenhance=to_int(raw_values.get("resenhance")),
+            operating_mode=raw_values.get("currentFilterOperatingMode"),
+            raw_values=raw_values,
         )
 
     def samples(

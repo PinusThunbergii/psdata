@@ -158,6 +158,16 @@ class ChannelSettings:
 
 
 @dataclass(frozen=True)
+class ChannelFilterSettings:
+    window_index: int
+    channel_index: int
+    frequency_item_name: Optional[str]
+    resenhance: Optional[int]
+    operating_mode: Optional[str]
+    raw_values: dict[str, Optional[str]] = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
 class MathChannelInfo:
     window_index: int
     list_index: int

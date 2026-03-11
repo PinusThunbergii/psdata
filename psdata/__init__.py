@@ -3,6 +3,7 @@
 from .model import (
     BinaryDescriptor,
     ChannelArray,
+    ChannelFilterSettings,
     ChannelInfo,
     ChannelSample,
     ChannelSettings,
@@ -52,6 +53,7 @@ __all__ = [
     "BinaryDescriptor",
     "ValueMode",
     "ChannelArray",
+    "ChannelFilterSettings",
     "ChannelInfo",
     "ChannelSample",
     "ChannelSettings",

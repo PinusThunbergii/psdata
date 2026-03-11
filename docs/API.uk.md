@@ -51,6 +51,13 @@ from psdata import (
 - `bandwidth_limit`
 - `sample_rate_hz` (обчислюється з time metadata)
 
+### `channel_filters(channel: int, window_index: int = 0) -> ChannelFilterSettings`
+Повертає налаштування filter manager для одного каналу:
+- `frequency_item_name`
+- `resenhance`
+- `operating_mode`
+- `raw_values` (усі raw key/value поля з XML-вузла)
+
 ### `samples(...) -> Iterator[ChannelSample]`
 Потокова ітерація семплів з фільтрами:
 - `channel`
