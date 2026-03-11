@@ -8,7 +8,7 @@ import re
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterator, Optional
+from typing import Any, Iterator, Literal, Optional
 
 from .model import (
     ChannelArray,
@@ -327,6 +327,31 @@ class PsData:
 
     def windows_count(self) -> int:
         return len(self.document.settings_root.findall("./capturewindows/capturewindow"))
+
+    def preview(self, size: Optional[Literal["small", "large"]] = None) -> Optional[bytes]:
+        """Return embedded capture preview PNG bytes from known trailer chunks.
+
+        Notes:
+        - This is capture-level preview (not per-channel/per-window rendering).
+        - Returns `None` if the requested preview chunk is absent.
+        """
+
+        if size is None:
+            preferred_names = ("preview_large.png", "preview_small.png")
+        elif size == "small":
+            preferred_names = ("preview_small.png",)
+        elif size == "large":
+            preferred_names = ("preview_large.png",)
+        else:
+            raise PsDataError(f"Unsupported preview size: {size}")
+
+        by_name = {chunk.default_name: chunk.payload for chunk in self.document.known_chunks()}
+        for expected_name in preferred_names:
+            payload = by_name.get(expected_name)
+            if payload is not None:
+                return payload
+
+        return None
 
     def windows_info(self, include_channels: bool = True) -> list[WindowInfo]:
         windows = self.document.settings_root.findall("./capturewindows/capturewindow")

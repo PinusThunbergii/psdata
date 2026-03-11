@@ -28,6 +28,14 @@ from psdata import (
 ### `windows_count() -> int`
 Повертає кількість capture-вікон у `settings.xml`.
 
+### `preview(size: Optional[Literal["small", "large"]] = None) -> Optional[bytes]`
+Повертає PNG-байти вбудованого trailer preview:
+- `size=None` (default) -> найбільший доступний (`preview_large.png`, fallback `preview_small.png`)
+- `size="small"` -> `preview_small.png`
+- `size="large"` -> `preview_large.png`
+
+Повертає `None`, якщо потрібний chunk відсутній.
+
 ### `windows_info(include_channels: bool = True) -> list[WindowInfo]`
 Повертає структуровану інформацію по вікнах:
 - `window_type`, `buffer_count`, `channels_count`

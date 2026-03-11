@@ -28,6 +28,14 @@ Open `.psdata` / `.pssettings` and build a convenient high-level facade.
 ### `windows_count() -> int`
 Return number of capture windows in `settings.xml`.
 
+### `preview(size: Optional[Literal["small", "large"]] = None) -> Optional[bytes]`
+Return embedded trailer preview PNG bytes:
+- `size=None` (default) -> largest available (`preview_large.png`, fallback `preview_small.png`)
+- `size="small"` -> `preview_small.png`
+- `size="large"` -> `preview_large.png`
+
+Returns `None` when the requested chunk is missing.
+
 ### `windows_info(include_channels: bool = True) -> list[WindowInfo]`
 Return structured window metadata:
 - `window_type`, `buffer_count`, `channels_count`
